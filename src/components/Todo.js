@@ -8,24 +8,18 @@ class Todo extends React.Component {
         this.onClickClose = this.onClickClose.bind(this);
     }
     onClickClose() {
-        alert('remove' +this.props.id);
+        this.props.onClick(this.props.id);
     };
+
     render () {
         return (
             <form className={style.Todolist}>
                 <h3> {this.props.id}.  {this.props.text} !!      
-                <button type="button" className="close" >x</button>
+                <button type="button" className="close" onClick={this.onClickClose}>x</button>
                 </h3>
             </form>
         )
     }
-};
-
-Todo.propTypes = {
-    todo: {
-        id: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
-    },
 };
 
 export default Todo; 

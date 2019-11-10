@@ -9,30 +9,27 @@ class TodoList extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            justClicked: null,
-            submitted: null
+            clickedId: '',
+            newTodo: ''
         };
     }
 
     handleClick(id) {
-        alert('id: '+id);
+        this.props.removeTodo(id);
     }
 
     handleSubmit(val) {
-        alert('submitted: '+val);
+        alert('wyslano: '+val);
     }
     
     render() {
         return (
             <section className={style.todolist}>
                 {this.props.todoList.map(todo =>  <Todo key={todo.id} {...todo} onClick={() => this.handleClick(todo.id)} />)}
-        
-                <TodoForm onSubmit={() => this.handleSubmit(text)} />
+                <TodoForm onSubmit={() => this.handleSubmit(this.state.newIodo)} />
             </section>  
         )
     }
 }
-
-
 
 export default TodoList;
