@@ -16,14 +16,13 @@ class TodoList extends React.Component {
 
     handleSubmit(val) {
         this.props.addTodo(val);
-        val = '';
     }
     
     render() {
         return (
             <section className={style.todolist}>
-                {this.props.todoList.map(todo =>  <Todo key={todo.id} nr={todo.nr} {...todo} onClick={() => this.handleClick(todo.id)} />)}
-                <TodoForm onSubmit={this.handleSubmit} />
+                {this.props.todoList.map(todo =>  <Todo key={todo.id} {...todo} onClick={() => this.handleClick(todo.id)} />)}
+                <TodoForm val='' onSubmit={this.handleSubmit} />
             </section>  
         )
     }
