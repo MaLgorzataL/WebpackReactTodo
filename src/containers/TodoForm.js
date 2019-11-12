@@ -4,18 +4,25 @@ import { PropTypes } from 'prop-types';
 class TodoForm extends React.Component {
     constructor(props){
         super(props);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.state = {value: ''};
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    onSubmit(event) {
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+        this.props.onSubmit(this.state.value);
         event.preventDefault();
-        alert(event.target.value);
-        }
+    }
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <input type='text' placeholder="add a new todo..."/>  
+            <form onSubmit={this.handleSubmit}>
+                <input type='text' placeholder="add a new todo..." value={this.state.value} onChange={this.handleChange}/>  
                 <button type='submit'>Add to list</button>
             </form>
         );

@@ -11,19 +11,24 @@ class App extends React.Component {
         this.state = {
             data: [{
                 id: 1,
-                    text: 'do next task from Kodilla course'
+                    text: 'do next task from Kodilla course',
+                    nr: 1
                 }, {
                 id: 2,
-                    text: 'cook something for dinner'
+                    text: 'cook something for dinner',
+                    nr: 2
                 }, {
                 id: 3,
-                    text: 'prepare sandwiches and clothes to work on tomorrow morning'
+                    text: 'prepare sandwiches and clothes to work on tomorrow morning',
+                    nr: 3
                 }, {
                 id: 4,
-                    text: 'wash the dishes'
+                    text: 'wash the dishes',
+                    nr: 4
                 }, {
                 id: 5,
-                    text: 'clean room'
+                    text: 'clean room',
+                    nr: 5
                 }],                 
         };
         this.addTodo = this.addTodo.bind(this);
@@ -32,9 +37,10 @@ class App extends React.Component {
     addTodo(val){
         const todo = {
             text: val,
-            id: uuid.v4(),
+            id: uuid.v4()
         };
         const data = [...this.state.data, todo];
+        todo.nr = this.state.data.length +1;
         this.setState({data});
     }
     removeTodo(id) {
@@ -47,7 +53,6 @@ class App extends React.Component {
             <div className={style.TodoApp}>
                 <Title props={this.state.data.length} />
                 <TodoList todoList={this.state.data} removeTodo={this.removeTodo.bind(this)} addTodo={this.addTodo.bind(this)}/>
-
             </div>
         );
     }        

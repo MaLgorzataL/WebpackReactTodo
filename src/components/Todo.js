@@ -14,7 +14,7 @@ class Todo extends React.Component {
     render () {
         return (
             <form className={style.Todolist}>
-                <h3> {this.props.id}.  {this.props.text} !!      
+                <h3> {this.props.nr}.  {this.props.text} !!      
                 <button type="button" className="close" onClick={this.onClickClose}>x</button>
                 </h3>
             </form>
